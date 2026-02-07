@@ -65,7 +65,7 @@ function EmployerDashboard() {
 
       <div className="container">
         <div className="card" style={{ marginBottom: '30px' }}>
-          <h1 style={{ marginBottom: '10px' }}>Google Recruiting</h1>
+          <h1 style={{ marginBottom: '10px' }}>AWS Recruiting</h1>
           <p style={{ color: '#718096' }}>Find motivated students through real interactions</p>
         </div>
 
