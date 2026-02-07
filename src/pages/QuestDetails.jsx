@@ -5,8 +5,8 @@ function QuestDetails() {
   const { id } = useParams();
 
   const quest = {
-    title: 'Google Cloud Hackathon',
-    company: 'Google',
+    title: 'AWS Cloud Hackathon',
+    company: 'AWS',
     date: 'Feb 15, 2026',
     time: '9:00 AM - 9:00 PM',
     location: 'Campus Center, Room 301',

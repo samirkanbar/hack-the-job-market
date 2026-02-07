@@ -28,8 +28,8 @@ function StudentDashboard() {
   const quests = [
     {
       id: 1,
-      title: 'Google Cloud Hackathon',
-      company: 'Google',
+      title: 'AWS Cloud Hackathon',
+      company: 'AWS',
       date: 'Feb 15, 2026',
       location: 'Campus Center',
       tokens: 200,
