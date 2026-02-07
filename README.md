@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # applIRL
 
 A 2-sided platform connecting students to employers through real-world events and quests.
@@ -35,3 +36,10 @@ npm run dev
 - React Router 6
 - Vite
 - CSS (no framework)
+=======
+# hack-the-job-market
+https://docs.google.com/document/d/132203KF2jyttOFLOIK8Namlz95cCRs-bet2J7jAi2iQ/edit?usp=sharing
+
+# slide-deck
+https://docs.google.com/presentation/d/1mDcGHvF3zSW4UJV9iip51JfTomByi7baBx9N5BOJTu8/edit?usp=sharing
+>>>>>>> 471f4b7a7e7ec6ecc09d05af2dd5643d8ab4c1da
