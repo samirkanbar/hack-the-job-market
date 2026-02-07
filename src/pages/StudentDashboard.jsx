@@ -77,71 +77,14 @@ function StudentDashboard() {
       </nav>
 
       <div className="container">
-        <div className="card" style={{ marginBottom: '30px', background: 'linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)', border: '4px solid #fbbf24' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start', marginBottom: '20px' }}>
-            <div style={{ flex: 1 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '15px' }}>
-                <div style={{ 
-                  width: '80px', 
-                  height: '80px', 
-                  borderRadius: '50%', 
-                  background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: '40px',
-                  border: '4px solid white',
-                  boxShadow: '0 4px 12px rgba(0,0,0,0.2)'
-                }}>
-                  👨‍💻
-                </div>
-                <div>
-                  <h1 style={{ marginBottom: '8px', fontSize: '32px' }}>{studentData.name}</h1>
-                  <div className="level-badge">
-                    <span className="fire-icon">🔥</span>
-                    Level {studentData.level}
-                  </div>
-                </div>
-              </div>
-              
-              <div style={{ marginBottom: '15px' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '5px' }}>
-                  <span style={{ fontWeight: 700, fontSize: '14px' }}>XP Progress</span>
-                  <span style={{ fontWeight: 700, fontSize: '14px' }}>{studentData.xpCurrent} / {studentData.xpNeeded}</span>
-                </div>
-                <div className="progress-bar">
-                  <div className="progress-fill" style={{ width: `${(studentData.xpCurrent / studentData.xpNeeded) * 100}%` }}>
-                    {Math.round((studentData.xpCurrent / studentData.xpNeeded) * 100)}%
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <h3 style={{ marginBottom: '10px', fontSize: '16px' }}>🏆 Badges Earned</h3>
-                <div>
-                  {studentData.badges.map((badge, i) => (
-                    <span key={i} className={`badge badge-${badge.color}`}>
-                      {badge.emoji} {badge.name}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-            
-            <div style={{ display: 'flex', gap: '15px' }}>
-              <div className="stat-card" style={{ minWidth: '140px' }}>
-                <div className="stat-value">{studentData.hustleStat}</div>
-                <div className="stat-label">🔥 Hustle</div>
-              </div>
-              <div className="stat-card" style={{ minWidth: '140px', background: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)', borderColor: '#6d28d9', boxShadow: '0 6px 0 #5b21b6' }}>
-                <div className="stat-value">💎 {studentData.tokens}</div>
-                <div className="stat-label">Tokens</div>
-              </div>
-            </div>
-          </div>
-        </div>
 
         <div style={{ marginBottom: '20px', display: 'flex', gap: '10px' }}>
+          <button 
+            className={`btn ${activeTab === 'profile' ? 'btn-primary' : 'btn-secondary'}`}
+            onClick={() => setActiveTab('profile')}
+          >
+            👤 Profile
+          </button>
           <button 
             className={`btn ${activeTab === 'quests' ? 'btn-primary' : 'btn-secondary'}`}
             onClick={() => setActiveTab('quests')}
@@ -155,6 +98,111 @@ function StudentDashboard() {
             ✅ Completed
           </button>
         </div>
+
+        {activeTab === 'profile' && (
+          <div>
+            <div className="card" style={{ marginBottom: '30px', background: 'linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)', border: '4px solid #fbbf24' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start', marginBottom: '20px' }}>
+                <div style={{ flex: 1 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '15px' }}>
+                    <div style={{ 
+                      width: '100px', 
+                      height: '100px', 
+                      borderRadius: '50%', 
+                      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: '50px',
+                      border: '5px solid white',
+                      boxShadow: '0 6px 16px rgba(0,0,0,0.3)'
+                    }}>
+                      👨‍💻
+                    </div>
+                    <div>
+                      <h1 style={{ marginBottom: '8px', fontSize: '36px' }}>{studentData.name}</h1>
+                      <div className="level-badge">
+                        <span className="fire-icon">🔥</span>
+                        Level {studentData.level}
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div style={{ marginBottom: '15px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '5px' }}>
+                      <span style={{ fontWeight: 700, fontSize: '16px' }}>XP Progress to Level {studentData.level + 1}</span>
+                      <span style={{ fontWeight: 700, fontSize: '16px' }}>{studentData.xpCurrent} / {studentData.xpNeeded}</span>
+                    </div>
+                    <div className="progress-bar">
+                      <div className="progress-fill" style={{ width: `${(studentData.xpCurrent / studentData.xpNeeded) * 100}%` }}>
+                        {Math.round((studentData.xpCurrent / studentData.xpNeeded) * 100)}%
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div style={{ display: 'flex', gap: '15px' }}>
+                  <div className="stat-card" style={{ minWidth: '140px' }}>
+                    <div className="stat-value">{studentData.hustleStat}</div>
+                    <div className="stat-label">🔥 Hustle</div>
+                  </div>
+                  <div className="stat-card" style={{ minWidth: '140px', background: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)', borderColor: '#6d28d9', boxShadow: '0 6px 0 #5b21b6' }}>
+                    <div className="stat-value">💎 {studentData.tokens}</div>
+                    <div className="stat-label">Tokens</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <h2 style={{ marginBottom: '20px', fontSize: '28px', fontWeight: 900, color: 'white', textShadow: '2px 2px 0 rgba(0,0,0,0.2)' }}>
+              🏆 Your Badges
+            </h2>
+            <div className="grid grid-2" style={{ marginBottom: '30px' }}>
+              {studentData.badges.map((badge, i) => (
+                <div key={i} className="card" style={{ 
+                  background: 'linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)',
+                  border: '3px solid #fbbf24',
+                  textAlign: 'center',
+                  padding: '30px'
+                }}>
+                  <div style={{ fontSize: '64px', marginBottom: '15px' }}>{badge.emoji}</div>
+                  <h3 className={`badge badge-${badge.color}`} style={{ fontSize: '18px', padding: '10px 20px', marginBottom: '10px' }}>
+                    {badge.name}
+                  </h3>
+                  <p style={{ fontSize: '14px', color: '#78350f', fontWeight: 600 }}>
+                    Earned by attending {Math.floor(Math.random() * 5) + 3} events
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <h2 style={{ marginBottom: '20px', fontSize: '28px', fontWeight: 900, color: 'white', textShadow: '2px 2px 0 rgba(0,0,0,0.2)' }}>
+              📊 Your Stats
+            </h2>
+            <div className="grid grid-2">
+              <div className="card" style={{ textAlign: 'center', padding: '40px' }}>
+                <div style={{ fontSize: '48px', marginBottom: '10px' }}>🎯</div>
+                <div className="stat-value" style={{ color: '#667eea' }}>{completedQuests.length + 5}</div>
+                <div className="stat-label" style={{ color: '#2d3748' }}>Total Quests Completed</div>
+              </div>
+              <div className="card" style={{ textAlign: 'center', padding: '40px' }}>
+                <div style={{ fontSize: '48px', marginBottom: '10px' }}>⭐</div>
+                <div className="stat-value" style={{ color: '#f59e0b' }}>{completedQuests.reduce((sum, q) => sum + q.endorsements, 0) + 8}</div>
+                <div className="stat-label" style={{ color: '#2d3748' }}>Employer Endorsements</div>
+              </div>
+              <div className="card" style={{ textAlign: 'center', padding: '40px' }}>
+                <div style={{ fontSize: '48px', marginBottom: '10px' }}>📅</div>
+                <div className="stat-value" style={{ color: '#10b981' }}>12</div>
+                <div className="stat-label" style={{ color: '#2d3748' }}>Events Attended</div>
+              </div>
+              <div className="card" style={{ textAlign: 'center', padding: '40px' }}>
+                <div style={{ fontSize: '48px', marginBottom: '10px' }}>🏢</div>
+                <div className="stat-value" style={{ color: '#8b5cf6' }}>8</div>
+                <div className="stat-label" style={{ color: '#2d3748' }}>Companies Met</div>
+              </div>
+            </div>
+          </div>
+        )}
 
         {activeTab === 'quests' && (
           <div className="grid grid-2">
